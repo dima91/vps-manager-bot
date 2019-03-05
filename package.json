@@ -1,0 +1,28 @@
+{
+  "name": "vps-manager-bot",
+  "version": "1.0.0",
+  "description": "Telgram bot which allows to manage a VPS server",
+  "main": "index.js",
+  "dependencies": {
+    "telegraf": "^3.27.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dima91/vps-manager-bot.git"
+  },
+  "keywords": [
+    "nodejs",
+    "bot",
+    "vps"
+  ],
+  "author": "Luca Di Mauro",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dima91/vps-manager-bot/issues"
+  },
+  "homepage": "https://github.com/dima91/vps-manager-bot#readme"
+}
