@@ -30,11 +30,6 @@ const loadCofiguration	= (filePath) => {
 	let rawdata	= fs.readFileSync (filePath);
 	let config	= JSON.parse(rawdata);
 
-	bot.hears('hi', (ctx) => {
-		ctx.reply('Hey there')
-		console.log ("Message received by  " + ctx.from)
-	})
-
 	return config;
 }
 
@@ -59,6 +54,11 @@ const setupMe			= (configuration) => {
 	const bot		= new Telegraf (botToken);
 
 	debug ("Using this token: " + botToken);
+
+	bot.hears('hi', (ctx) => {
+		ctx.reply('Hey there')
+		console.log ("Message received by  " + ctx.from)
+	})
 
 	return bot;
 }
