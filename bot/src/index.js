@@ -57,7 +57,8 @@ const setupMe			= (configuration) => {
 
 	bot.hears('hi', (ctx) => {
 		ctx.reply('Hey there')
-		console.log ("Message received by  " + ctx.from)
+		console.log ("Message received by..")
+		console.log (ctx.from)
 	})
 
 	return bot;
@@ -80,7 +81,7 @@ const main	= () => {
 
 	console.log ("\n\n"+
 				 "==================================================\n" +
-				 "                    BOT STARTED!\n" +
+				 "                   BOT STARTED!\n" +
 				 "==================================================\n")
 }
 
