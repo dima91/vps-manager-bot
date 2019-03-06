@@ -30,6 +30,11 @@ const loadCofiguration	= (filePath) => {
 	let rawdata	= fs.readFileSync (filePath);
 	let config	= JSON.parse(rawdata);
 
+	bot.hears('hi', (ctx) => {
+		ctx.reply('Hey there')
+		console.log ("Message received by  " + ctx.from)
+	})
+
 	return config;
 }
 
