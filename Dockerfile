@@ -4,4 +4,4 @@ WORKDIR /usr/src/
 COPY bot ./
 WORKDIR ./bot
 RUN npm install
-ENTRYPOINT [ "npm", "start"]
+ENTRYPOINT [ "npm", "start", "BOT_TOKEN"]
