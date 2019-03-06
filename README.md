@@ -11,7 +11,7 @@ docker build . -t vps-manager-bot
 docker container run vps-manager-bot
 ```
 
-If you want to use *docker-compose*, just put this code into your *docker-compose.yml*:
+If you want to use **docker-compose**, just build the container and put this code into your *docker-compose.yml*:
 ```
 vps-manager-bot:
     build: ./manager-bot/
@@ -20,3 +20,6 @@ vps-manager-bot:
     restart: always
 ```
 
+# Updates
+
+When bot sources are updated, you have just to rebuild the image with `docker build . -t vps-manager-bot` and restart the container (if you use **docker-compose** type `docker-compose up`)

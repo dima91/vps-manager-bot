@@ -55,14 +55,6 @@ const setupMe			= (configuration) => {
 
 	debug ("Using this token: " + botToken);
 
-	bot.hears('hi', (ctx) => {
-		ctx.reply('Hey there')
-		console.log ("Message received by..")
-		console.log (ctx.from)
-		console.log ("Chat info")
-		console.log (ctx.chat)
-	})
-
 	return bot;
 }
 
