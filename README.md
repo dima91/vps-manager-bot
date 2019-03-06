@@ -2,13 +2,13 @@
 Telgram bot which allows to manage a VPS server
 
 # Run
-To execute this bot, got to root directory and type
+To execute this bot, you have to create the docker image starting from the Dockerfile and effectively run the container.
+
+Firstly open the Dockerfile and change the third argument of *ENTRYPOINT* command with the bot token provided by **Bot Father**.  
+After that, go to root directory and type
 ``` bash
 docker build . -t vps-manager-bot
-```
-to create the docker image. To run a container of that image, type
-```
-docker container run vps-manager-bot <bot_token>
+docker container run vps-manager-bot
 ```
 
 If you want to use *docker-compose*, just put this code into your *docker-compose.yml*:
