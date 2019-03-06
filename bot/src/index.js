@@ -59,6 +59,8 @@ const setupMe			= (configuration) => {
 		ctx.reply('Hey there')
 		console.log ("Message received by..")
 		console.log (ctx.from)
+		console.log ("Chat info")
+		console.log (ctx.chat)
 	})
 
 	return bot;
