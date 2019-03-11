@@ -1,5 +1,12 @@
 {
 	"debug"			: true,
-	"super-user"	: "dima91",
-	"allowed-users"	: []
+	"super-users"	: ["dima91"],
+	"allowed-users"	: [],
+	"commands"		: {
+			"start"		: 1,
+			"help"		: 1,
+			"settings"	: 0,
+			"restart"	: 0
+	},
+	"startup-chat-id" : ["86474108"]
 }

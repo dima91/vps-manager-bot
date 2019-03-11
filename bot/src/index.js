@@ -1,25 +1,19 @@
 "use strict";
 
-const fs		= require('fs');
-const Telegraf	= require('telegraf');
+const fs					= require ('fs');
+const Telegraf				= require ('telegraf');
 
-var debugFlag	= false;
+const utils					= require ('./utils');
+const commands				= require ('./commands');
+const permissionsManager	= require ('./permissionsManager');
+const localContextManager	= require ('./localContextManager');
 
 
 
 
-// Function to pritn program usage
+// Function to print program usage
 const printUsage		= () => {
 	console.log ("Usage: npm start <token>")
-}
-
-
-
-
-// Function to print only if 'debugFlag' variable is true
-const debug				= (message) => {
-	if (debugFlag)
-		console.log (message);
 }
 
 
@@ -48,12 +42,50 @@ const setupMe			= (configuration) => {
 		process.abort ();
 	}
 
-	debugFlag		= configuration.debug;
+	utils.DEBUG		= configuration.debug;
 
 	const botToken	= process.argv[3];
 	const bot		= new Telegraf (botToken);
 
-	debug ("Using this token: " + botToken);
+	permissionsManager.users["super-users"]		= configuration["super-users"];
+	permissionsManager.users["allowed-users"]	= configuration["allowed-users"];
+	permissionsManager.commands					= configuration["commands"];
+
+	utils.debug ("Using this token: " + botToken);
+
+
+	// =============================
+	// Registering logger middleware
+	bot.use ((ctx, next) => {
+		utils.log (ctx);
+		return next ();
+	})
+
+
+	// =========================================
+	// Registering permissionsManager middleware
+	bot.use ((ctx, next) => {
+		permissionsManager.checkPermissions (ctx);
+		return next ();
+	})
+
+
+	// =================================
+	// Registering local context manager
+	bot.use ((ctx, next) => {
+		ctx	= localContextManager.extendContext (ctx);
+		return next ();
+	})
+
+
+	// =====================
+	// Registering commands
+	bot.start		((ctx) => commands.onStart (ctx));
+	bot.help		((ctx) => commands.onHelp (ctx));
+	bot.settings	((ctx) => commands.onSettings (ctx));
+
+	bot.command		('restart', (ctx) => commands.onRestart (ctx));
+
 
 	return bot;
 }
@@ -70,6 +102,9 @@ const setupMe			= (configuration) => {
 const main	= () => {
 	let configuration	= loadCofiguration (process.argv[2]);
 	let vpsBot			= setupMe (configuration);
+
+	// Sending notifications to super-users
+	utils.onBotStartup (vpsBot, configuration["startup-chat-id"]);
 
 	vpsBot.launch ();
 
