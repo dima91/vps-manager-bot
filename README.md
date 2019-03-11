@@ -20,6 +20,10 @@ vps-manager-bot:
     restart: always
 ```
 
+
+### Supervisor
+If you want to use **supervisor** as daemon manager, copy the *vps-manager-bot.conf* file inside supervisor's *conf.d* directory and change the file with correct values.
+
 # Updates
 
 When bot sources are updated, you have just to rebuild the image with `docker build . -t vps-manager-bot` and restart the container (if you use **docker-compose** type `docker-compose up`)
