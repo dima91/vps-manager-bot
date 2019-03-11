@@ -16,7 +16,7 @@ module.exports	= {
 	log		: (ctx) => {
 		console.log ("=====================" + "\n" +
 					 new Date(Date.now()).toLocaleString() + "\n" +
-					 "Received message from    " + ctx.from.username + "(chatid: " + ctx.chat.id + ")" + "\n" +
+					 "Received message from    " + ctx.from.username + " (chatid: " + ctx.chat.id + ")" + "\n" +
 					 "       which has type    " + ctx.updateType + "\n" +
 					 "     and this content    " + ctx.message.text +"\n"
 		);

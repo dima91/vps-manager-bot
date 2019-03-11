@@ -5,5 +5,5 @@ if [ $# != 1 ] ; then
 	exit 1
 fi
 
-cd bot
+cd "$(dirname "$0")"/bot
 npm start $1
