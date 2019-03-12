@@ -24,10 +24,10 @@ module.exports	= {
 
 	checkPermissions (ctx) {
 		const currLevel	= this.user2PermissionsLevel (ctx.from.username);
+		const reqLevel	= this.commands[ctx.message.text.substr(1)];
 		
-		if (this.commands[ctx.message.text] > currLevel) {
-			console.log ("currL: " + currLevel + "\treqL: " + this.commands["restart"]);
-			throw "Invalid curret level!"
+		if (reqLevel < currLevel) {
+			throw "Invalid curret level!\t\tcurrLevel= "+ currLevel + ",  reqLevel= " + reqLevel;
 		}
 	}
 }

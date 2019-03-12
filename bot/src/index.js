@@ -54,6 +54,14 @@ const setupMe			= (configuration) => {
 	utils.debug ("Using this token: " + botToken);
 
 
+	// ==========================
+	// Registering errors catcher
+	bot.catch ((err) => {
+		console.error ("Throwed this error during bot execution:")
+		console.error (err);
+	})
+
+
 	// =============================
 	// Registering logger middleware
 	bot.use ((ctx, next) => {
@@ -109,9 +117,9 @@ const main	= () => {
 	vpsBot.launch ();
 
 	console.log ("\n\n"+
-				 "==================================================\n" +
-				 "                   BOT STARTED!\n" +
-				 "==================================================\n")
+				"==================================================\n" +
+				"                   BOT STARTED!\n" +
+				"==================================================\n")
 }
 
 

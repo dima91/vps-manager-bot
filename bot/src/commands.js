@@ -1,5 +1,7 @@
 "use strict";
 
+const exec					= require('child_process').exec;
+
 module.exports	= {
 	utils : null,
 	
@@ -25,5 +27,10 @@ module.exports	= {
 
 	onRestart	: (ctx) => {
 		ctx.reply ("Restarting the VPS");
+
+		exec('reboot', (error, stdout, stderr) => {
+			if (error)
+				console.error (error);
+		});
 	}
 }
