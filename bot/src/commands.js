@@ -28,9 +28,29 @@ module.exports	= {
 	onRestart	: (ctx) => {
 		ctx.reply ("Restarting the VPS");
 
-		exec('reboot', (error, stdout, stderr) => {
+		exec ('reboot', (error, stdout, stderr) => {
 			if (error)
 				console.error (error);
+		});
+	},
+
+
+	
+	onExec		: (ctx) => {
+		const cmd		= ctx.message.text.substr (6);
+		var replyStr	= "";
+
+		exec (cmd, (error, stdout, stderr) => {
+			if (error)
+				replyStr	= "=====  Error executing command  =====\n" +
+							  "=================================\n" +
+							  error;
+			else
+				replyStr	= "=====  Command output  =====\n" + 
+							  "==========================\n" +
+							  stdout;
+
+			ctx.reply (replyStr);
 		});
 	}
 }

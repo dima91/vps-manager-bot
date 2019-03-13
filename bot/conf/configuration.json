@@ -6,7 +6,8 @@
 			"start"		: 1,
 			"help"		: 1,
 			"settings"	: 0,
-			"restart"	: 0
+			"restart"	: 0,
+			"exec"		: 0
 	},
 	
 	"startup-chat-id" : ["86474108"]
