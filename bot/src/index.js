@@ -92,8 +92,8 @@ const setupMe			= (configuration) => {
 	bot.help		((ctx) => commands.onHelp (ctx));
 	bot.settings	((ctx) => commands.onSettings (ctx));
 
-	bot.command		('restart', (ctx) => commands.onRestart (ctx));
-	bot.command		('exec', (ctx) => commands.onExec (ctx));
+	bot.command		('restart',	(ctx) => commands.onRestart (ctx));
+	bot.command		('exec',	(ctx) => commands.onExec (ctx));
 
 
 	return bot;
